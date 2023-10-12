@@ -1,0 +1,18 @@
+#!/usr/bin/python
+# download txt file of youtube urls
+# elijah mccormick
+# updated 2023
+  
+import subprocess
+
+# Define the input file name
+fname = 'urls.txt'
+
+# Read and store the URLs from the file
+with open(fname) as f:
+    urls = f.readlines()
+
+# Run youtube-dl for each URL
+for url in urls:
+    command = f"youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' {url}"
+    subprocess.run(command, shell=True)
